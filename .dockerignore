@@ -1,0 +1,13 @@
+*
+!.container
+!prisma
+!public
+!src
+!additional.d.ts
+!LICENSE
+!next.config.js
+!next-env.d.ts
+!package.json
+!tsconfig.json
+!yarn.lock
+!.env

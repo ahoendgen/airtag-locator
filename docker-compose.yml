@@ -1,0 +1,28 @@
+version: '3'
+
+services:
+    server:
+        image: ghcr.io/ahoendgen/airtag-locator:main
+        restart: unless-stopped
+        environment:
+            APP_ENV: $APP_ENV
+            APP_SECRET: $APP_SECRET
+            DATABASE_URL: "file:/app_shared/dev.db"
+        volumes:
+            - app_shared:/app_shared
+
+    cronjob:
+        image: ghcr.io/ahoendgen/airtag-locator:main
+        restart: unless-stopped
+        command: 'crond -f'
+        environment:
+            APP_ENV: $APP_ENV
+            APP_SECRET: $APP_SECRET
+            FIND_MY_CACHE_LOCATION: /findmy
+            DATABASE_URL: "file:/app_shared/dev.db"
+        volumes:
+            - /Users/${USER}/Library/Caches/com.apple.findmy.fmipcore:/findmy:ro
+            - app_shared:/app_shared
+
+volumes:
+    app_shared:

@@ -1,0 +1,70 @@
+{
+    "name": "airtag-locator",
+    "version": "0.1.0",
+    "license": "MIT",
+    "homepage": "https://github.com/ahoendgen/airtag-locator",
+    "author": {
+        "name": "André Hoendgen"
+    },
+    "scripts": {
+        "make": "yarn plop",
+        "dev": "next dev",
+        "build": "next build",
+        "start": "next start -p 80",
+        "start:in-container": "prisma db push && next start -p 80",
+        "fix": "next lint --fix",
+        "lint": "next lint",
+        "prepare": "prisma generate",
+        "cmd:fetch-locations": "tsx ./src/command/fetch-locations.ts",
+        "db:clear": "tsx prisma/clear.ts",
+        "db:push": "prisma db push",
+        "db:seed": "prisma db seed",
+        "db:regenerate": "yarn db:push && yarn db:clear && yarn db:push && yarn db:seed"
+    },
+    "dependencies": {
+        "@prisma/client": "4.14.1",
+        "@types/bootstrap": "^5.2.6",
+        "@types/eslint": "8.40.0",
+        "@types/eslint-config-prettier": "^6.11.0",
+        "@types/eslint-plugin-prettier": "^3.1.0",
+        "@types/leaflet": "^1.9.3",
+        "@types/node": "20.2.3",
+        "@types/prettier": "^2.7.2",
+        "@types/react": "18.2.7",
+        "@types/react-dom": "18.2.4",
+        "bootstrap": "^5.2.3",
+        "dotenv": "^16.0.3",
+        "eslint": "8.41.0",
+        "leaflet": "^1.9.4",
+        "next": "13.4.3",
+        "prisma": "^4.14.1",
+        "react": "18.2.0",
+        "react-dom": "18.2.0",
+        "react-leaflet": "^4.2.1",
+        "sass": "^1.62.1",
+        "tsx": "^3.12.7",
+        "typescript": "5.0.4"
+    },
+    "devDependencies": {
+        "@a9g/plop-generator-react-atomic-component": "^0.0.5",
+        "@typescript-eslint/eslint-plugin": "^5.29.0",
+        "@typescript-eslint/parser": "^5.17.0",
+        "eslint-config-next": "^13.4.4",
+        "eslint-config-prettier": "^8.5.0",
+        "eslint-import-resolver-typescript": "^3.5.0",
+        "eslint-plugin-import": "^2.25.4",
+        "eslint-plugin-jsx-a11y": "^6.5.1",
+        "eslint-plugin-prettier": "^4.2.1",
+        "eslint-plugin-simple-import-sort": "^10.0.0",
+        "plop": "^3.1.2",
+        "prettier": "^2.8.8",
+        "typescript-plugin-css-modules": "^5.0.1"
+    },
+    "volta": {
+        "node": "18.16.0",
+        "yarn": "1.22.19"
+    },
+    "prisma": {
+        "seed": "tsx prisma/seed.ts"
+    }
+}

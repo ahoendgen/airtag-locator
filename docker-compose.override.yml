@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+    server:
+        build: .
+        environment:
+            APP_ENV: dev
+        ports:
+            - 80:80
+
+    cronjob:
+        build: .
+        environment:
+            APP_ENV: dev
+            FIND_MY_CACHE_LOCATION: /findmy
+        volumes:
+            - /Users/${USER}/Library/Caches/com.apple.findmy.fmipcore:/findmy:ro

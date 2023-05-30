@@ -1,0 +1,13 @@
+root = true
+
+[*]
+end_of_line = lf
+insert_final_newline = true
+charset = utf-8
+indent_style = space
+indent_size = 4
+max_line_length = 80
+
+# Windows files
+[*.bat]
+end_of_line = crlf

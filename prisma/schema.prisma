@@ -1,0 +1,37 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Device {
+  id           Int       @id @default(autoincrement())
+  name         String?
+  serialNumber String?   @unique
+  emoji        String?
+  lastSeenAt   DateTime?
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+
+  Location Location[]
+}
+
+model Location {
+  id         Int       @id @default(autoincrement())
+  longitude  Float?
+  latitude   Float?
+  altitude   Float?
+  lastSeenAt DateTime?
+  Device     Device    @relation(fields: [deviceId], references: [id])
+  deviceId   Int
+  createdAt  DateTime  @default(now())
+  updatedAt  DateTime  @updatedAt
+
+    @@unique([deviceId, longitude, latitude, altitude, lastSeenAt])
+}
